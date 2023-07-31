@@ -10,14 +10,13 @@
 </head>
 <body>
 
-    <nav th:fragment="navigation">
-        <ul class="nav">
-            <li class="nav-item"><a class="nav-link" href="/events">All Events</a></li>
-            <li class="nav-item"><a class="nav-link" href="/events/create">Create Event</a></li>
-        </ul>
-    </nav>
-
-    <td th:fragment="address">900 N Awesome Street, Kansas City, MO</td>
+<nav th:fragment="header">
+    <h1 th:text="${title}">Coding Events</h1>
+    <ul>
+        <li><a href="/events">All Events</a></li>
+        <li><a href="/events/create">Create Event</a></li>
+    </ul>
+</nav>
 
 </body>
 </html>
