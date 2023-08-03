@@ -6,6 +6,8 @@
 
     <header th:replace="fragments :: header"></header>
 
+    <p class="alert alert-danger" th:text="${errorMsg}" th:if="${hasErrors}"></p>
+
     <form method="post">
         <div class="form-group">
             <label>Name
