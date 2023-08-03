@@ -6,48 +6,48 @@
 
     <header th:replace="fragments :: header"></header>
 
-    <form method="post">
+    <form method="post" th:object="${event}">
         <div class="form-group">
             <label class="form-label">Name
-                <input th:field="${event.name}" class="form-control">
+                <input th:field="*{name}" class="form-control">
             </label>
-            <p class="alert alert-danger col-3" th:if="${hasErrors}" th:errors="${event.name}"></p>
+            <p class="alert alert-danger col-3" th:if="${hasErrors}" th:errors="*{name}"></p>
         </div>
         <div class="form-group">
             <label class="form-label">Description
-                <input th:field="${event.description}" class="form-control">
+                <input th:field="*{description}" class="form-control">
             </label>
-            <p class="alert alert-danger col-3" th:if="${hasErrors}" th:errors="${event.description}"></p>
+            <p class="alert alert-danger col-3" th:if="${hasErrors}" th:errors="*{description}"></p>
         </div>
         <div class="form-group">
             <label class="form-label">Contact Email
-                <input th:field="${event.contactEmail}" class="form-control">
+                <input th:field="*{contactEmail}" class="form-control">
             </label>
-            <p class="alert alert-danger col-3" th:if="${hasErrors}" th:errors="${event.contactEmail}"></p>
+            <p class="alert alert-danger col-3" th:if="${hasErrors}" th:errors="*{contactEmail}"></p>
         </div>
         <div class="form-group">
             <label class="form-label">Location
-                <input th:field="${event.location}" class="form-control">
+                <input th:field="*{location}" class="form-control">
             </label>
-            <p class="alert alert-danger col-3" th:if="${hasErrors}" th:errors="${event.location}"></p>
+            <p class="alert alert-danger col-3" th:if="${hasErrors}" th:errors="*{location}"></p>
         </div>
         <div class="form-group">
             <label class="form-check-label">Registration Required?
-                <input type="radio" value="true" th:field="${event.registrationRequired}" class="form-check-input">
+                <input type="radio" value="true" th:field="*{registrationRequired}" class="form-check-input">
             </label>
-            <p class="alert alert-danger col-3" th:if="${hasErrors}" th:errors="${event.registrationRequired}"></p>
+            <p class="alert alert-danger col-3" th:if="${hasErrors}" th:errors="*{registrationRequired}"></p>
         </div>
         <div class="form-group">
             <label class="form-label">Number of Attendees
-                <input type="number" th:field="${event.attendees}" class="form-control">
+                <input type="number" th:field="*{attendees}" class="form-control">
             </label>
-            <p class="alert alert-danger col-3" th:if="${hasErrors}" th:errors="${event.attendees}"></p>
+            <p class="alert alert-danger col-3" th:if="${hasErrors}" th:errors="*{attendees}"></p>
         </div>
         <div class="form-group">
-            <label class="form-label">Number of Attendees
-                <input type="date" th:field="${event.eventDate}" class="form-control">
+            <label class="form-label">Event Date
+                <input type="date" name="eventDate" class="form-control">
             </label>
-            <p class="alert alert-danger col-3" th:if="${hasErrors}" th:errors="${event.eventDate}"></p>
+            <p class="alert alert-danger col-3" th:if="${hasErrors}" th:errors="*{eventDate}"></p>
         </div>
         <div class="form-group">
             <input type="submit" value="Create" class="btn btn-success">

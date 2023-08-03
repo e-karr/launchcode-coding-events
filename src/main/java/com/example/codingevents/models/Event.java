@@ -1,5 +1,7 @@
 package com.example.codingevents.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -30,6 +32,8 @@ public class Event {
     @Positive(message = "Event must have at least 1 attendee.")
     private int attendees;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+//    @NotBlank(message = "Date is required.")
     @Future(message = "Event must take place on a future date.")
     private LocalDate eventDate;
 
@@ -38,17 +42,17 @@ public class Event {
         nextId++;
     }
 
-    public Event(String name, String description, String contactEmail, String location, int attendees, String date) {
+    public Event(String name, String description, String contactEmail, String location, int attendees, LocalDate date) {
         this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
         this.location = location;
         this.attendees = attendees;
-        this.eventDate = LocalDate.parse(date);
+        this.eventDate = date;
     }
 
-    public Event(String name, String description, String contactEmail, String location, int attendees, String date, boolean registrationRequired) {
+    public Event(String name, String description, String contactEmail, String location, int attendees, LocalDate date, boolean registrationRequired) {
         this(name, description, contactEmail, location, attendees, date);
         if (registrationRequired) {
             this.registrationRequired = true;
@@ -103,8 +107,8 @@ public class Event {
         this.attendees = attendees;
     }
 
-    public LocalDate getEventDate() {
-        return eventDate;
+    public String getEventDate() {
+        return eventDate.toString();
     }
 
     public void setEventDate(LocalDate eventDate) {

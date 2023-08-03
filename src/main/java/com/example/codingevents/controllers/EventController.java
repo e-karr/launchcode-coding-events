@@ -2,12 +2,14 @@ package com.example.codingevents.controllers;
 
 import com.example.codingevents.data.EventData;
 import com.example.codingevents.models.Event;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -32,10 +34,10 @@ public class EventController {
 
     @PostMapping("create")
     public String processCreateEventForm(@ModelAttribute @Valid Event newEvent, Errors errors, Model model) {
+
         if (errors.hasErrors()) {
             model.addAttribute("hasErrors", errors.hasErrors());
             model.addAttribute("title", "Create Event");
-//            System.out.println(newEvent.getEventDate().toString());
             return "events/create";
         }
 
