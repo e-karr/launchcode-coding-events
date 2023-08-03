@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -34,8 +35,10 @@ public class EventController {
         if (errors.hasErrors()) {
             model.addAttribute("hasErrors", errors.hasErrors());
             model.addAttribute("title", "Create Event");
+//            System.out.println(newEvent.getEventDate().toString());
             return "events/create";
         }
+
         EventData.add(newEvent);
         return "redirect:";
     }
