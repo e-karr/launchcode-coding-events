@@ -26,6 +26,13 @@
             <p class="alert alert-danger col-3" th:if="${hasErrors}" th:errors="${event.contactEmail}"></p>
         </div>
         <div class="form-group">
+            <label>Event Type
+                <select th:field="${event.type}" class="form-select">
+                    <option th:each="type : ${types}" th:value="${type}" th:text="${type.displayName}"></option>
+                </select>
+            </label>
+        </div>
+        <div class="form-group">
             <input type="submit" value="Create" class="btn btn-success">
         </div>
     </form>
