@@ -38,6 +38,7 @@ public class EventController {
         if (errors.hasErrors()) {
             model.addAttribute("hasErrors", errors.hasErrors());
             model.addAttribute("title", "Create Event");
+            System.out.println(errors.getFieldError());
             return "events/create";
         }
 
