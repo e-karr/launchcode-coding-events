@@ -32,8 +32,8 @@ public class Event {
     @Positive(message = "Event must have at least 1 attendee.")
     private int attendees;
 
+    @NotNull(message = "Date is required.")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-//    @NotBlank(message = "Date is required.")
     @Future(message = "Event must take place on a future date.")
     private LocalDate eventDate;
 
