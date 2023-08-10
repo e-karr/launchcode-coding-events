@@ -36,9 +36,9 @@ public class EventController {
     public String processCreateEventForm(@ModelAttribute @Valid Event newEvent, Errors errors, Model model) {
 
         if (errors.hasErrors()) {
+            model.addAttribute("event", newEvent);
             model.addAttribute("hasErrors", errors.hasErrors());
             model.addAttribute("title", "Create Event");
-            System.out.println(errors.getFieldError());
             return "events/create";
         }
 

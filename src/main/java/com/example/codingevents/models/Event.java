@@ -33,8 +33,8 @@ public class Event {
     private int attendees;
 
     @NotNull(message = "Date is required.")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Future(message = "Event must take place on a future date.")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate eventDate;
 
     public Event() {
@@ -107,8 +107,8 @@ public class Event {
         this.attendees = attendees;
     }
 
-    public String getEventDate() {
-        return eventDate.toString();
+    public LocalDate getEventDate() {
+        return eventDate;
     }
 
     public void setEventDate(LocalDate eventDate) {
