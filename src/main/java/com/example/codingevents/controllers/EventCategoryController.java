@@ -20,7 +20,7 @@ public class EventCategoryController {
     @Autowired
     private EventCategoryRepository eventCategoryRepository;
 
-    @GetMapping("index")
+    @GetMapping
     public String displayAllEvents(Model model) {
         model.addAttribute("title", "All Categories");
         model.addAttribute("categories", eventCategoryRepository.findAll());
@@ -39,7 +39,7 @@ public class EventCategoryController {
                                                  Errors errors,
                                                  Model model) {
         if (errors.hasErrors()) {
-            model.addAttribute(new EventCategory());
+            model.addAttribute("hasErrors", errors.hasErrors());
             model.addAttribute("title", "Create Category");
             return "eventCategories/create";
         }

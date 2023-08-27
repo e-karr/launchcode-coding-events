@@ -3,6 +3,7 @@ package com.example.codingevents.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
@@ -12,7 +13,8 @@ public class EventCategory {
     @GeneratedValue
     private int id;
 
-    @Size(min=3, message="Name must be at least 3 characters long")
+    @NotBlank(message="Name is required.")
+    @Size(min=3, message="Name must be at least 3 characters long.")
     private String name;
 
     public EventCategory() {}
