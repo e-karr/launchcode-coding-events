@@ -41,6 +41,25 @@ public class EventController {
         return "events/index";
     }
 
+    @GetMapping("details")
+    public String displayEventDetails(@RequestParam(required = false) Integer eventId, Model model) {
+        if (eventId == null) {
+            model.addAttribute("title", "All Events");
+            model.addAttribute("events", eventRepository.findAll());
+        } else {
+            Optional<Event> result = eventRepository.findById(eventId);
+            if (result.isEmpty()) {
+                model.addAttribute("title", "Invalid Event ID: " + eventId);
+            } else {
+                Event event = result.get();
+                model.addAttribute("title", event.getName() + " Details");
+                model.addAttribute("eventDetails", event.getEventDetails());
+            }
+        }
+
+        return "events/details";
+    }
+
     @GetMapping("create")
     public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");

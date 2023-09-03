@@ -13,7 +13,7 @@
         </tr>
         </thead>
         <tr th:each="category : ${categories}">
-            <td><a class="link-opacity-50-hover link-underline link-underline-opacity-0" th:text="${category.name}" th:href="'/events?categoryId=' + ${category.id}"></a></td>
+            <td><a th:text="${category.name}" th:href="'/events?categoryId=' + ${category.id}"></a></td>
         </tr>
     </table>
 </body>
