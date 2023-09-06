@@ -8,6 +8,7 @@ public class Person {
     // calendar?
 
     // getters and setters
+    // method to validate password and username/email when logging in?
     // make a calendar from list of events?
     // maybe a Calendar class to make the calendar
 }
