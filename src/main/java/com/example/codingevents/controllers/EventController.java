@@ -14,6 +14,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -132,12 +133,15 @@ public class EventController {
     public String processAddTagForm(@ModelAttribute @Valid EventTagDTO eventTag, Errors errors, Model model) {
         if (!errors.hasErrors()) {
             Event event = eventTag.getEvent();
-            Tag tag = eventTag.getTag();
+            List<Tag> tags = eventTag.getTags();
 
-            if (!event.getTags().contains(tag)) {
-                event.addTag(tag);
-                eventRepository.save(event);
+            for (Tag tag : tags) {
+                if (!event.getTags().contains(tag)) {
+                    event.addTag(tag);
+                    eventRepository.save(event);
+                }
             }
+
             return "redirect:details?eventId=" + event.getId();
         }
 

@@ -4,6 +4,7 @@ import com.example.codingevents.models.Event;
 import com.example.codingevents.models.Tag;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 public class EventTagDTO {
 
@@ -11,7 +12,7 @@ public class EventTagDTO {
     private Event event;
 
     @NotNull
-    private Tag tag;
+    private List<Tag> tags;
 
     public EventTagDTO() {}
 
@@ -23,11 +24,11 @@ public class EventTagDTO {
         this.event = event;
     }
 
-    public Tag getTag() {
-        return tag;
+    public List<Tag> getTags() {
+        return tags;
     }
 
-    public void setTag(Tag tag) {
-        this.tag = tag;
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 }

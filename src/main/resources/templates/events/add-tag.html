@@ -8,11 +8,12 @@
 <form method="post">
     <div class="form-group">
         <input type="hidden" th:field="${eventTag.event}">
-        <label>Event Tag
-            <select th:field="${eventTag.tag}">
-                <option th:each="tag: ${tags}" th:value="${tag.id}" th:text="${tag.name}"></option>
-            </select>
-        </label>
+        <th:block th:each="tag: ${tags}">
+            <div class="form-check">
+                <input class="form-check-input" th:id="'tag' + ${tag.id}" type="checkbox" name="tag" th:field="${tag}">
+                <label th:for="'tag' + ${tag.id}" th:text="${tag.displayName}"></label>
+            </div>
+        </th:block>
     </div>
 
     <button class="btn btn-primary" type="submit">Add Tag</button>
