@@ -82,6 +82,7 @@ public class EventController {
         model.addAttribute("title", "Create Event");
         model.addAttribute(new Event());
         model.addAttribute("categories", eventCategoryRepository.findAll());
+        model.addAttribute("tags", tagRepository.findAll());
         return "events/create";
     }
 

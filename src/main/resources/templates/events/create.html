@@ -34,6 +34,13 @@
             <p class="alert alert-danger col-3" th:if="${hasErrors}" th:errors="${event.eventCategory}"></p>
         </div>
         <div class="form-group">
+            <div>Add Tags</div>
+            <th:block th:each="tag: ${tags}">
+                    <input th:field="${event.tags}" class="form-check-input" th:id="'tag' + ${tag.id}" type="checkbox" name="tag" th:value="${tag.id}">
+                    <label th:for="'tag' + ${tag.id}" th:text="${tag.displayName}"></label>
+            </th:block>
+        </div>
+        <div class="form-group">
             <input type="submit" value="Create" class="btn btn-success">
         </div>
     </form>
