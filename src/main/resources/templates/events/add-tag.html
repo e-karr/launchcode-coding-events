@@ -10,7 +10,7 @@
         <input type="hidden" th:field="${eventTag.event}">
         <th:block th:each="tag: ${tags}">
             <div class="form-check">
-                <input class="form-check-input" th:id="'tag' + ${tag.id}" type="checkbox" name="tag" th:field="${tag}">
+                <input th:field="${eventTag.tags}" class="form-check-input" th:id="'tag' + ${tag.id}" type="checkbox" name="tag" th:value="${tag.id}">
                 <label th:for="'tag' + ${tag.id}" th:text="${tag.displayName}"></label>
             </div>
         </th:block>

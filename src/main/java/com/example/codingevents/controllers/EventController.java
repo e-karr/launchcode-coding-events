@@ -118,6 +118,11 @@ public class EventController {
     @GetMapping("add-tag")
     public String displayAddTagForm(@RequestParam Integer eventId, Model model) {
         Optional<Event> result = eventRepository.findById(eventId);
+        if (result.isEmpty()) {
+            model.addAttribute("title", "Invalid Event");
+            return "redirect:";
+        }
+
         Event event = result.get();
 
         model.addAttribute("title", "Add Tag to: " + event.getName());
